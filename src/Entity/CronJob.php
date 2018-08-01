@@ -12,8 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @package Shapecode\Bundle\CronBundle\Entity
  * @author  Nikita Loges
- *
- * @ORM\Entity(repositoryClass="Shapecode\Bundle\CronBundle\Repository\CronJobRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CronJob extends AbstractEntity implements CronJobInterface
@@ -21,54 +19,45 @@ class CronJob extends AbstractEntity implements CronJobInterface
 
     /**
      * @var string
-     * @ORM\Column(type="string")
      */
     protected $command;
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true)
      */
     protected $arguments;
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
 
     /**
      * @var int
-     * @ORM\Column(type="integer", options={"default":1})
      */
     protected $number = 1;
 
     /**
      * @var string
-     * @ORM\Column(type="string")
      */
     protected $period;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $lastUse;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
      */
     protected $nextRun;
 
     /**
      * @var Collection|CronJobResult[]
-     * @ORM\OneToMany(targetEntity="Shapecode\Bundle\CronBundle\Entity\CronJobResultInterface", mappedBy="cronJob", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     protected $results;
 
     /**
-     * @ORM\Column(type="boolean", options={"default"=1})
      */
     protected $enable = true;
 
@@ -104,10 +93,10 @@ class CronJob extends AbstractEntity implements CronJobInterface
         $arguments = '';
 
         if ($this->getArguments()) {
-            $arguments = ' ' . $this->getArguments();
+            $arguments = ' '.$this->getArguments();
         }
 
-        return $this->getCommand() . $arguments;
+        return $this->getCommand().$arguments;
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Shapecode\Bundle\CronBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Class AbstractEntity
  *
@@ -14,26 +12,24 @@ abstract class AbstractEntity implements AbstractEntityInterface
 {
 
     /**
-     * @ORM\Column(type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var mixed
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
      */
     protected $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
      */
     protected $updatedAt;
 
     /**
      * @inheritdoc
      */
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
@@ -41,7 +37,7 @@ abstract class AbstractEntity implements AbstractEntityInterface
     /**
      * @inheritdoc
      */
-    public function setId(?int $id = null): void
+    public function setId($id = null): void
     {
         $this->id = $id;
     }

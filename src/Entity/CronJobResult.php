@@ -9,8 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @package Shapecode\Bundle\CronBundle\Entity
  * @author  Nikita Loges
- *
- * @ORM\Entity(repositoryClass="Shapecode\Bundle\CronBundle\Repository\CronJobResultRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class CronJobResult extends AbstractEntity implements CronJobResultInterface
@@ -18,32 +16,26 @@ class CronJobResult extends AbstractEntity implements CronJobResultInterface
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
      */
     protected $runAt;
 
     /**
      * @var float
-     * @ORM\Column(type="float")
      */
     protected $runTime;
 
     /**
      * @var integer
-     * @ORM\Column(type="integer")
      */
     protected $statusCode;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
      */
     protected $output;
 
     /**
      * @var CronJob
-     * @ORM\ManyToOne(targetEntity="Shapecode\Bundle\CronBundle\Entity\CronJob", inversedBy="results", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     protected $cronJob;
 

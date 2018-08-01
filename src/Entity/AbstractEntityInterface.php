@@ -14,12 +14,12 @@ interface AbstractEntityInterface
     /**
      * @return int|null
      */
-    public function getId(): ?int;
+    public function getId();
 
     /**
      * @param integer|null $id
      */
-    public function setId(?int $id = null): void;
+    public function setId($id = null): void;
 
     /**
      * @param \DateTime $createdAt
