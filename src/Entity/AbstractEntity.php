@@ -1,34 +1,30 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Shapecode\Bundle\CronBundle\Entity;
 
 use DateTime;
-use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class AbstractEntity
+ *
+ * @package Shapecode\Bundle\CronBundle\Entity
+ * @author  Nikita Loges
+ */
 abstract class AbstractEntity implements AbstractEntityInterface
 {
+
     /**
-     * @ORM\Column(type="bigint", options={"unsigned"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @var string|int|null
+     * @var mixed
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var DateTime
+     * @var \DateTime
      */
     protected $updatedAt;
 
@@ -38,37 +34,59 @@ abstract class AbstractEntity implements AbstractEntityInterface
         $this->updatedAt = new DateTime();
     }
 
-    public function getId() : ?int
+    /**
+     * @inheritdoc
+     */
+    public function getId()
     {
-        if ($this->id !== null) {
-            return (int) $this->id;
-        }
-
         return $this->id;
     }
 
-    public function setId(?int $id = null) : void
+    /**
+     * @inheritdoc
+     */
+    public function setId($id = null): void
     {
         $this->id = $id;
     }
 
-    public function setCreatedAt(DateTime $createdAt) : void
+    /**
+     * @inheritdoc
+     */
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
-    public function getCreatedAt() : DateTime
+    /**
+     * @inheritdoc
+     */
+    public function getCreatedAt(): \DateTime
     {
+        if (empty($this->createdAt)) {
+            $this->setCreatedAt(new \DateTime());
+        }
+
         return $this->createdAt;
     }
 
-    public function setUpdatedAt(DateTime $updatedAt) : void
+    /**
+     * @inheritdoc
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
 
-    public function getUpdatedAt() : DateTime
+    /**
+     * @inheritdoc
+     */
+    public function getUpdatedAt(): \DateTime
     {
+        if (empty($this->updatedAt)) {
+            $this->setUpdatedAt(new \DateTime());
+        }
+
         return $this->updatedAt;
     }
 }

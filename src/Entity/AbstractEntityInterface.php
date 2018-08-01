@@ -8,10 +8,6 @@ use DateTime;
 
 interface AbstractEntityInterface
 {
-    public function getId() : ?int;
-
-    public function setId(?int $id = null) : void;
-
     public function setCreatedAt(DateTime $createdAt) : void;
 
     public function getCreatedAt() : DateTime;
@@ -19,4 +15,14 @@ interface AbstractEntityInterface
     public function setUpdatedAt(DateTime $updatedAt) : void;
 
     public function getUpdatedAt() : DateTime;
+
+    /**
+     * @return int|null
+     */
+    public function getId();
+
+    /**
+     * @param integer|null $id
+     */
+    public function setId($id = null): void;
 }
