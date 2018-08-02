@@ -148,7 +148,7 @@ class CronRunCommand extends BaseCommand
         $php = $this->getPhpExecutable();
         $env = $this->getEnvironment();
 
-        $command = sprintf('%s %s shapecode:cron:process %d --env=%s', $php, $consoleBin, $job->getId(), $env);
+        $command = sprintf('%s %s shapecode:cron:process %s --env=%s', $php, $consoleBin, $job->getId(), $env);
 
         $process = new Process($command);
         $process->disableOutput();
