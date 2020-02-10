@@ -14,13 +14,12 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
 
-    /**
-     * @inheritDoc
-     */
-    public function getConfigTreeBuilder()
+    private const ROOT_NODE = 'shapecode_cron';
+
+    public function getConfigTreeBuilder() : TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('shapecode_cron');
+        $treeBuilder = new TreeBuilder(self::ROOT_NODE);
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
